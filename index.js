@@ -1,5 +1,6 @@
 const { parse } = require('url');
-const axios = require('axios');
+const heroes = require('./superhero.json');
+
 module.exports = async (req, res) => {
     function similarity(s1, s2) {
         var longer = s1;
@@ -44,9 +45,9 @@ module.exports = async (req, res) => {
     
   const { query } = parse(req.url, true)
   const { hero = 'World' } = query;
-  const resp = await axios.get('https://akabab.github.io/superhero-api/api/all.json');
+
   let foundData;
-    resp.data.map( elem => {
+    heroes.map( elem => {
       if((similarity(hero,elem.name)>=.8 || similarity(hero,elem.biography.fullName)>=.8) && !foundData) {
         foundData = elem;
       }
