@@ -52,4 +52,5 @@ module.exports = async (req, res) => {
         foundData = elem;
       }
     });
-    foundData ? res.end(JSON.stringify(foundData)) : res.end('Hero Not Found');
+    foundData ? res.end(JSON.stringify(foundData)) : res.end('Hero Not Found')
+  };
